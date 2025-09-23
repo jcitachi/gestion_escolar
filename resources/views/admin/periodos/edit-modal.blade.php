@@ -10,6 +10,29 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Gestiones <b>(*)</b></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-fw fa-layer-group"></i></span>
+                                    </div>
+                                    <select name="gestion_id" class="form-control" id="gestion_id" required>
+                                        <option value="">Seleccione una Gestion</option>
+                                        @foreach ($gestiones as $gestion)
+                                            <option value="{{ $gestion->id }}"{{ old('gestion_create', $periodo->gestion_id) == $gestion->id ? 'selected' : '' }}>
+                                                {{ $gestion->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                 @error('gestion_id')
+                                    <small style="color: red">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <!-- Nombre -->
                         <div class="col-md-12">
                             <div class="form-group">
