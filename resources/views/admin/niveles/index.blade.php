@@ -26,7 +26,7 @@
                             <tr>
                                 <th class="text-center" style="width: 10%">Nro</th>
                                 <th style="width: 30%">Nombre</th>
-                                <th class="text-center" style="width: 20%">Acciones</th>
+                                <th class="text-center" style="width: 45%">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

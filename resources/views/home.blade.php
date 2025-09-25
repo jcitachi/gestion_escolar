@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>home</p>
 @stop
 @section('footer')
     <strong>Copyright &copy; 2025 <a href="#">Juan Carlos </a>.</strong>

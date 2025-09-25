@@ -20,9 +20,25 @@ Table gestiones{
     updated_at timestamp
 }
 
+Table periodos{
+    id int [pk, increment]
+    nombre varchar
+    gestion_id int [ref: > gestiones.id]
+    created_at timestamp
+    updated_at timestamp
+}
+
 Table niveles{
     id int [pk, increment]
     nombre varchar
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table grados{
+    id int [pk, increment]
+    nombre varchar
+    nivel_id int [ref: > niveles.id]
     created_at timestamp
     updated_at timestamp
 }
