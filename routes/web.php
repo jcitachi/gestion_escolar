@@ -66,3 +66,14 @@ Route::put('/admin/materias/{id}', [App\Http\Controllers\MateriaController::clas
 Route::delete('/admin/materias/{id}', [App\Http\Controllers\MateriaController::class, 'destroy'])->name('admin.materias.destroy')->middleware('auth'); //destroy =>(eliminar datos)
 
 
+//rutas para los roles del sistema
+Route::get('/admin/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('admin.roles.index')->middleware('auth'); //index =>(listar datos)
+Route::get('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('admin.roles.create')->middleware('auth'); //create =>(formulario para crear)
+Route::post('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'store'])->name('admin.roles.store')->middleware('auth'); //store =>(guardar datos)
+Route::get('/admin/roles/{id}/edit', [App\Http\Controllers\RoleController::class, 'edit'])->name('admin.roles.edit')->middleware('auth'); //edit =>(formulario para editar)
+Route::put('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('admin.roles.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('admin.roles.destroy')->middleware('auth'); //destroy =>(eliminar datos)
+    //ruta para asignar permisos a los roles
+Route::get('/admin/roles/permisos/{id}', [App\Http\Controllers\RoleController::class, 'permisos'])->name('admin.roles.permisos')->middleware('auth'); //permisos =>(asignar permisos a los roles)
+
+

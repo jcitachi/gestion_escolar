@@ -353,6 +353,13 @@ return [
             'icon' => 'fas fa-fw fa-book',
             'classes' => 'bg-blue text-white',
         ],
+        [
+            'text' => 'Roles',
+            'route' => 'admin.roles.index',
+            'icon' => 'fas fa-fw fa-user-shield',
+            'classes' => 'bg-blue text-white',
+        ],
+
 
     ],
 

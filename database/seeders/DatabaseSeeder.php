@@ -7,6 +7,7 @@ use App\Models\Nivel;
 use App\Models\Grado;
 use App\Models\Paralelo;
 use App\Models\Gestion;
+use App\Models\Materia;
 use App\Models\Periodo;
 use App\Models\Turno;
 use App\Models\User;
@@ -86,5 +87,29 @@ class DatabaseSeeder extends Seeder
         Turno::create(['nombre' => 'Mañana']);
         Turno::create(['nombre' => 'Tarde']);
         Turno::create(['nombre' => 'Noche']);
+
+        // Inicial
+        Materia::create(['nombre' => 'Matemática']);
+        Materia::create(['nombre' => 'Comunicación']);
+        Materia::create(['nombre' => 'Ciencias']);
+        Materia::create(['nombre' => 'Arte y creatividad']);
+        Materia::create(['nombre' => 'Educación física']);
+        Materia::create(['nombre' => 'Música']);
+        Materia::create(['nombre' => 'Valores']);
+
+        // Primaria (solo las nuevas)
+        Materia::create(['nombre' => 'Ciencias Sociales']);
+        Materia::create(['nombre' => 'Ciencias Naturales']);
+        Materia::create(['nombre' => 'Arte y cultura']);
+        Materia::create(['nombre' => 'Inglés']);
+
+        // Secundaria (solo las nuevas)
+        Materia::create(['nombre' => 'Historia']);
+        Materia::create(['nombre' => 'Geografía']);
+        Materia::create(['nombre' => 'Física']);
+        Materia::create(['nombre' => 'Química']);
+        Materia::create(['nombre' => 'Biología']);
+        Materia::create(['nombre' => 'Arte']);
+        Materia::create(['nombre' => 'Informática']);
     }
 }
