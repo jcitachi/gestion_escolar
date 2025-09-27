@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gestion;
 use App\Models\Grado;
 use App\Models\Nivel;
+use App\Models\Paralelo;
 use App\Models\Periodo;
 use App\Models\Turno;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class AdminController extends Controller
         $total_niveles = Nivel::count(); // Aquí deberías obtener el total de niveles desde la base de datos
         $total_grados = Grado::count(); // Aquí deberías obtener el total de grados desde la base de datos
         $total_turnos = Turno::count(); //
-       return view('admin.index', compact('total_gestiones', 'total_periodos', 'total_niveles', 'total_grados', 'total_turnos', 'total_turnos'));
+        $total_paralelos = Paralelo::count(); // Aquí deberías obtener el total de turnos desde la base de datos
+       return view('admin.index', compact('total_gestiones', 'total_periodos', 'total_niveles', 'total_grados', 'total_turnos', 'total_turnos', 'total_paralelos'));
     }
 }
