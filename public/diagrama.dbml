@@ -43,6 +43,14 @@ Table grados{
     updated_at timestamp
 }
 
+Table paralelos{
+    id int [pk, increment]
+    nombre varchar
+    grado_id int [ref: > grados.id]
+    created_at timestamp
+    updated_at timestamp
+}
+
 Table turnos{
     id int [pk, increment]
     nombre varchar
