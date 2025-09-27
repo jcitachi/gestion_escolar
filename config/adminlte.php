@@ -330,6 +330,12 @@ return [
             'classes' => 'bg-blue text-white',
         ],
         [
+            'text' => 'Grados',
+            'route' => 'admin.grados.index',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
             'text' => 'Turnos',
             'route' => 'admin.turnos.index',
             'icon' => 'fas fa-fw fa-clock',
