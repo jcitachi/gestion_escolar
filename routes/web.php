@@ -59,4 +59,10 @@ Route::get('/admin/turnos/{id}/edit', [App\Http\Controllers\TurnoController::cla
 Route::put('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'update'])->name('admin.turnos.update')->middleware('auth'); //update =>(actualizar datos)
 Route::delete('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'destroy'])->name('admin.turnos.destroy')->middleware('auth'); //destroy =>(eliminar datos)
 
+//rutas para las materias del sistema
+Route::get('/admin/materias', [App\Http\Controllers\MateriaController::class, 'index'])->name('admin.materias.index')->middleware('auth'); //index =>(listar datos)
+Route::post('/admin/materias/create', [App\Http\Controllers\MateriaController::class, 'store'])->name('admin.materias.store')->middleware('auth'); //store =>(guardar datos)
+Route::put('/admin/materias/{id}', [App\Http\Controllers\MateriaController::class, 'update'])->name('admin.materias.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/materias/{id}', [App\Http\Controllers\MateriaController::class, 'destroy'])->name('admin.materias.destroy')->middleware('auth'); //destroy =>(eliminar datos)
+
 

@@ -347,6 +347,12 @@ return [
             'icon' => 'fas fa-fw fa-clock',
             'classes' => 'bg-blue text-white',
         ],
+        [
+            'text' => 'Materias',
+            'route' => 'admin.materias.index',
+            'icon' => 'fas fa-fw fa-book',
+            'classes' => 'bg-blue text-white',
+        ],
 
     ],
 

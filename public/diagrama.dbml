@@ -57,3 +57,10 @@ Table turnos{
     created_at timestamp
     updated_at timestamp
 }
+
+Table materias{
+    id int [pk, increment]
+    nombre varchar
+    created_at timestamp
+    updated_at timestamp
+}
