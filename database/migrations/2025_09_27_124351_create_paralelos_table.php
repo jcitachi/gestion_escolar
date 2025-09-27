@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('paralelos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->foreignId('grado_id')->constrained()->onDelete('cascade');
+            $table->foreignId('grado_id')->constrained('grados')->onDelete('cascade');
             $table->timestamps();
         });
     }
