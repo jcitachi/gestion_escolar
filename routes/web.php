@@ -77,3 +77,11 @@ Route::delete('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 
 Route::get('/admin/roles/permisos/{id}', [App\Http\Controllers\RoleController::class, 'permisos'])->name('admin.roles.permisos')->middleware('auth'); //permisos =>(asignar permisos a los roles)
 
 
+//rutas para los personal del sistema
+Route::get('/admin/personal', [App\Http\Controllers\PersonalController::class, 'index'])->name('admin.personal.index')->middleware('auth'); //index =>(listar datos)
+Route::get('/admin/personal/create', [App\Http\Controllers\PersonalController::class, 'create'])->name('admin.personal.create')->middleware('auth'); //create =>(formulario para crear)
+Route::post('/admin/personal/create', [App\Http\Controllers\PersonalController::class, 'store'])->name('admin.personal.store')->middleware('auth'); //store =>(guardar datos)
+Route::get('/admin/personal/($id)', [App\Http\Controllers\PersonalController::class, 'show'])->name('admin.personal.show')->middleware('auth'); //create =>(formulario para crear)
+Route::get('/admin/personal/{id}/edit', [App\Http\Controllers\PersonalController::class, 'edit'])->name('admin.personal.edit')->middleware('auth'); //edit =>(formulario para editar)
+Route::put('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'update'])->name('admin.personal.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'destroy'])->name('admin.personal.destroy')->middleware('auth'); //destroy =>(eliminar datos)

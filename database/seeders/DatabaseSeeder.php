@@ -22,11 +22,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        $this->call(RoleSeeder::class);
+
 
         User::factory()->create([
             'name' => 'Juan Carlos',
             'email' => 'admin@admin.com',
-        ]);
+        ])->assignRole('ADMINISTRADOR');
 
         Configuracion::create([
             'nombre' => 'I.E N°-0773-Barranquita',
@@ -111,5 +113,8 @@ class DatabaseSeeder extends Seeder
         Materia::create(['nombre' => 'Biología']);
         Materia::create(['nombre' => 'Arte']);
         Materia::create(['nombre' => 'Informática']);
+
+
+
     }
 }

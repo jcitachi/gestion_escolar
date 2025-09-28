@@ -359,7 +359,24 @@ return [
             'icon' => 'fas fa-fw fa-user-shield',
             'classes' => 'bg-blue text-white',
         ],
+        [
+            'text' => 'Personal',
+            'icon' => 'fas fa-fw fa-user-tie',
+            'classes' => 'bg-blue text-white',
+            'submenu' => [
+                [
+                    'text' => 'Administrativos',
+                    'url'  => 'admin/personal',
+                    'icon' => 'fas fa-fw fa-user-cog',
+                ],
+                [
+                    'text' => 'Docente',
+                    'url'  => 'admin/personal',
+                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
+                ],
+            ], // cierre de 'submenu'
 
+         ],
 
     ],
 

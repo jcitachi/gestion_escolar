@@ -73,6 +73,24 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box zoomP">
+                <img src="{{asset('img/roles.gif')}}" width="70px" alt="">
+                <div class="info-box-content">
+                    <span class="info-box-text">Roles Registrados</span>
+                    <span class="info-box-number">{{ $total_roles}} Roles</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box zoomP">
+                <img src="{{asset('img/administrativo.gif')}}" width="70px" alt="">
+                <div class="info-box-content">
+                    <span class="info-box-text">Personal Administrativo</span>
+                    <span class="info-box-number">{{-- $total_roles--}} Administrativos</span>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 @section('footer')

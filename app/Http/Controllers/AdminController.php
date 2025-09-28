@@ -9,6 +9,7 @@ use App\Models\Paralelo;
 use App\Models\Periodo;
 use App\Models\Turno;
 use App\Models\Materia;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,6 +24,7 @@ class AdminController extends Controller
         $total_turnos = Turno::count(); //
         $total_paralelos = Paralelo::count(); // Aquí deberías obtener el total de turnos desde la base de datos
         $total_materias = Materia::count(); // Aquí deberías obtener el total de materias desde la base de datos
+        $total_roles = Role::count(); // Aquí deberías obtener el total de roles desde la base de datos
         return view(
             'admin.index',
             compact(
@@ -33,7 +35,8 @@ class AdminController extends Controller
                 'total_turnos',
                 'total_turnos',
                 'total_paralelos',
-                'total_materias'
+                'total_materias',
+                'total_roles'
             )
         );
     }

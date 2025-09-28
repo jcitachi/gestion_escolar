@@ -69,11 +69,7 @@
                         class="bg-white text-sky-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">
                         Ver más
                     </a>
-                    <!--
-          <a href="{{ route('register') }}" class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-500">
-            Registrarse
-          </a>
-            -->
+
                 </div>
             </div>
             <div class="flex justify-center items-center">

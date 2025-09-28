@@ -64,3 +64,27 @@ Table materias{
     created_at timestamp
     updated_at timestamp
 }
+
+Table users{
+    id int [pk, increment]
+    name varchar
+    email varchar
+    password varchar
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table personal{
+    id int [pk, increment]
+    usuario_id int [ref: > users.id]
+    tipo varchar
+    nombres varchar
+    apellidos varchar
+    ci varchar
+    fecha_nacimiento date
+    direccion varchar
+    telefono varchar
+    profesion varchar
+    created_at timestamp
+    updated_at timestamp
+}
