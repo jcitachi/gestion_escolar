@@ -85,6 +85,7 @@ Table personal{
     direccion varchar
     telefono varchar
     profesion varchar
+    foto varchar
     created_at timestamp
     updated_at timestamp
 }

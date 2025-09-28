@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h1>Listado de Roles</b></h1>
+    <h1>Listado del Personal {{ $tipo }}</h1>
     <hr class="border-top border-3 border-primary rounded">
 @stop
 
@@ -11,9 +11,9 @@
 
             <div class="card card-outline card-primary">
                 <div class="card-header bg-primary">
-                    <h3 class="card-title"><i class="fas fa-clock"></i> Roles Registrados</h3>
+                    <h3 class="card-title"><i class="fas fa-user"></i> Personal <b>{{ $tipo }}</b> Registrado</h3>
                     <div class="card-tools">
-                        <a href="{{ route('admin.roles.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Registrar Nuevo Rol</a>
+                        <a href="{{ url('/admin/personal/create/'. $tipo) }}" class="btn btn-primary"><i class="fas fa-plus"></i> Registrar Nuevo Personal</a>
 
                     </div>
                 </div>
@@ -21,34 +21,34 @@
                     <table class="table table-bordered table-striped table-hover table-sm" id="nivelesTable">
                         <thead>
                             <tr>
-                                <th class="text-center" style="width: 10%">Nro</th>
-                                <th style="width: 30%">Nombre del Rol</th>
-                                <th class="text-center" style="width: 50%">Acciones</th>
+                                <th >Nro</th>
+                                <th >Nombre del Rol</th>
+                                <th >Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($roles as $role)
+                            @foreach ($personals as $personal)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $personal->nombre }}</td>
                                     <td class="d-flex justify-content-center">
                                         {{-- Editar --}}
-                                        <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-success btn-sm mr-2">
+                                        <a href="{{ route('admin.personal.edit', $personal->id) }}" class="btn btn-success btn-sm mr-2">
                                             <i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i>
                                         </a>
                                         {{-- Eliminar --}}
-                                        <form action="{{ route('admin.roles.destroy', $role->id) }}" method="post"
-                                                id="miFormulario{{ $role->id }}">
+                                        <form action="{{ route('admin.personal.destroy', $personal->id) }}" method="post"
+                                                id="miFormulario{{ $personal->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="preguntar{{ $role->id }}(event)">
+                                                    onclick="preguntar{{ $personal->id }}(event)">
                                                     <i class="fas fa-trash" data-toggle="tooltip" title="Eliminar">
                                                         </i>
                                                 </button>
                                             </form>
                                         <script>
-                                            function preguntar{{ $role->id }}(event) {
+                                            function preguntar{{ $personal->id }}(event) {
                                                 event.preventDefault();
                                                 Swal.fire({
                                                     title: '¿Desea eliminar este registro?',
@@ -62,7 +62,7 @@
                                                 }).then((result) => {
                                                     if (result.isConfirmed) {
                                                         // JavaScript puro para enviar el formulario
-                                                        document.getElementById('miFormulario{{ $role->id }}').submit();
+                                                        document.getElementById('miFormulario{{ $personal->id }}').submit();
                                                     }
                                                 });
                                             }
@@ -83,6 +83,8 @@
 @section('css')
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+
+
 @stop
 
 @section('js')

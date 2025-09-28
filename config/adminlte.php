@@ -366,12 +366,14 @@ return [
             'submenu' => [
                 [
                     'text' => 'Administrativos',
-                    'url'  => 'admin/personal',
+                    'url' => '/admin/personal/administrativo',
+                    //'route' => ['admin.personal.index', 'administrativo'],
                     'icon' => 'fas fa-fw fa-user-cog',
                 ],
                 [
                     'text' => 'Docente',
-                    'url'  => 'admin/personal',
+                    'url' => '/admin/personal/docente',
+                    //'route' => ['admin.personal.index', 'docente'],
                     'icon' => 'fas fa-fw fa-chalkboard-teacher',
                 ],
             ], // cierre de 'submenu'
