@@ -7,10 +7,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index.home')->middleware('auth');
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+Auth::routes([
+    'register' => false, // Deshabilitar el registro de usuarios
+]);
+
+Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.indxex.home')->middleware('auth'); //middleware('auth') =>(para que solo los usuarios autenticados puedan acceder a esta ruta)
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth'); //middleware('auth') =>(para que solo los usuarios autenticados puedan acceder a esta ruta)
+
 
 //rutas para la configuración
 Route::get('/admin/configuracion', [App\Http\Controllers\ConfiguracionController::class, 'index'])->name('admin.configuracion.index')->middleware('auth'); //index =>(listar datos)
@@ -44,6 +48,13 @@ Route::put('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, '
 Route::delete('/admin/grados/{id}', [App\Http\Controllers\GradoController::class, 'destroy'])->name('admin.grados.destroy')->middleware('auth'); //destroy =>(eliminar datos)
 
 
+//rutas para los paralelos del sistema con modales
+Route::get('/admin/paralelos', [App\Http\Controllers\ParaleloController::class, 'index'])->name('admin.paralelos.index')->middleware('auth'); //index =>(listar datos)
+Route::post('/admin/paralelos/create', [App\Http\Controllers\ParaleloController::class, 'store'])->name('admin.paralelos.store')->middleware('auth'); //store =>(guardar datos)
+Route::put('/admin/paralelos/{id}', [App\Http\Controllers\ParaleloController::class, 'update'])->name('admin.paralelos.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/paralelos/{id}', [App\Http\Controllers\ParaleloController::class, 'destroy'])->name('admin.paralelos.destroy')->middleware('auth'); //destroy =>(eliminar datos)
+
+
 //rutas para los turnos del sistema
 Route::get('/admin/turnos', [App\Http\Controllers\TurnoController::class, 'index'])->name('admin.turnos.index')->middleware('auth'); //index =>(listar datos)
 Route::get('/admin/turnos/create', [App\Http\Controllers\TurnoController::class, 'create'])->name('admin.turnos.create')->middleware('auth'); //create =>(formulario para crear)
@@ -52,4 +63,29 @@ Route::get('/admin/turnos/{id}/edit', [App\Http\Controllers\TurnoController::cla
 Route::put('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'update'])->name('admin.turnos.update')->middleware('auth'); //update =>(actualizar datos)
 Route::delete('/admin/turnos/{id}', [App\Http\Controllers\TurnoController::class, 'destroy'])->name('admin.turnos.destroy')->middleware('auth'); //destroy =>(eliminar datos)
 
+//rutas para las materias del sistema
+Route::get('/admin/materias', [App\Http\Controllers\MateriaController::class, 'index'])->name('admin.materias.index')->middleware('auth'); //index =>(listar datos)
+Route::post('/admin/materias/create', [App\Http\Controllers\MateriaController::class, 'store'])->name('admin.materias.store')->middleware('auth'); //store =>(guardar datos)
+Route::put('/admin/materias/{id}', [App\Http\Controllers\MateriaController::class, 'update'])->name('admin.materias.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/materias/{id}', [App\Http\Controllers\MateriaController::class, 'destroy'])->name('admin.materias.destroy')->middleware('auth'); //destroy =>(eliminar datos)
 
+
+//rutas para los roles del sistema
+Route::get('/admin/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('admin.roles.index')->middleware('auth'); //index =>(listar datos)
+Route::get('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'create'])->name('admin.roles.create')->middleware('auth'); //create =>(formulario para crear)
+Route::post('/admin/roles/create', [App\Http\Controllers\RoleController::class, 'store'])->name('admin.roles.store')->middleware('auth'); //store =>(guardar datos)
+Route::get('/admin/roles/{id}/edit', [App\Http\Controllers\RoleController::class, 'edit'])->name('admin.roles.edit')->middleware('auth'); //edit =>(formulario para editar)
+Route::put('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('admin.roles.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/roles/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('admin.roles.destroy')->middleware('auth'); //destroy =>(eliminar datos)
+    //ruta para asignar permisos a los roles
+Route::get('/admin/roles/permisos/{id}', [App\Http\Controllers\RoleController::class, 'permisos'])->name('admin.roles.permisos')->middleware('auth'); //permisos =>(asignar permisos a los roles)
+
+
+//rutas para los personal del sistema
+Route::get('/admin/personal/{tipo}', [App\Http\Controllers\PersonalController::class, 'index'])->name('admin.personal.index')->middleware('auth'); //index =>(listar datos)
+Route::get('/admin/personal/create/{tipo}', [App\Http\Controllers\PersonalController::class, 'create'])->name('admin.personal.create')->middleware('auth'); //create =>(formulario para crear)
+Route::post('/admin/personal/create', [App\Http\Controllers\PersonalController::class, 'store'])->name('admin.personal.store')->middleware('auth'); //store =>(guardar datos)
+Route::get('/admin/personal/{$id}', [App\Http\Controllers\PersonalController::class, 'show'])->name('admin.personal.show')->middleware('auth'); //create =>(formulario para crear)
+Route::get('/admin/personal/{id}/edit', [App\Http\Controllers\PersonalController::class, 'edit'])->name('admin.personal.edit')->middleware('auth'); //edit =>(formulario para editar)
+Route::put('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'update'])->name('admin.personal.update')->middleware('auth'); //update =>(actualizar datos)
+Route::delete('/admin/personal/{id}', [App\Http\Controllers\PersonalController::class, 'destroy'])->name('admin.personal.destroy')->middleware('auth'); //destroy =>(eliminar datos)

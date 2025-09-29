@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class GradoController extends Controller
 {
+<<<<<<< HEAD
     /**
      * Display a listing of the resource.
      */
@@ -16,10 +17,20 @@ class GradoController extends Controller
     {
         //
         $niveles = Nivel::with('grados')->get();
+=======
+
+    public function index()
+    {
+        //
+        $niveles = Nivel::with('grados')
+            ->orderBy('nombre', 'asc')
+            ->get();
+>>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
         return view('admin.grados.index', compact('niveles'));
     }
 
 
+<<<<<<< HEAD
     public function store(Request $request)
     {
         //
@@ -35,12 +46,30 @@ class GradoController extends Controller
         $grado->nivel_id = $request->input('nivel_id_create');
         $grado->save();
 
+=======
+
+
+    public function store(Request $request)
+    {
+        //
+        //$datos = request()->all();
+        //return response()->json($datos);
+        $request->validate([
+            'niveles_id_create' => 'required|exists:nivels,id',
+            'nombre_create' => 'required|string|max:255',
+        ]);
+        $grado = new Grado();
+        $grado->nivel_id = $request->input('niveles_id_create');
+        $grado->nombre = $request->input('nombre_create');
+        $grado->save();
+>>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
         return redirect()->route('admin.grados.index')
         ->with('mensaje', 'Grado creado exitosamente.')
         ->with('icono', 'success');
     }
 
 
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         //
@@ -68,6 +97,32 @@ class GradoController extends Controller
         ->with('mensaje', 'Grado actualizado exitosamente.')
         ->with('icono', 'success');
 
+=======
+
+    public function update(Request $request, $id)
+    {
+        //
+        //$datos = request()->all();
+        //return response()->json($datos);
+        $validate =Validator::make($request->all(), [
+            'nivel_id' => 'required|exists:nivels,id',
+            'nombre' => 'required|string|max:255',
+        ]);
+        if ($validate->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput()
+                ->with('modal_id', $id);
+        }
+        $grado = Grado::find($id);
+        $grado->nivel_id = $request->input('nivel_id');
+        $grado->nombre = $request->input('nombre');
+        $grado->save();
+        return redirect()->route('admin.grados.index')
+        ->with('mensaje', 'Grado actualizado exitosamente.')
+        ->with('icono', 'success');
+>>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
     }
 
 

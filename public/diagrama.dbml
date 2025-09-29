@@ -1,16 +1,16 @@
 Table configuraciones{
 
-id int [pk, increment]
-nombre varchar
-descripcion varchar
-direccion varchar
-telefono varchar
-divisa varchar
-correo_electronico varchar
-web varchar
-logo varchar
-created_at timestamp
-updated_at timestamp
+    id int [pk, increment]
+    nombre varchar
+    descripcion varchar
+    direccion varchar
+    telefono varchar
+    divisa varchar
+    correo_electronico varchar
+    web varchar
+    logo varchar
+    created_at timestamp
+    updated_at timestamp
 }
 
 Table gestiones{
@@ -43,9 +43,51 @@ Table grados{
     updated_at timestamp
 }
 
+
+Table paralelos{
+    id int [pk, increment]
+    nombre varchar
+    grado_id int [ref: > grados.id]
+    created_at timestamp
+    updated_at timestamp
+}
+
+
 Table turnos{
     id int [pk, increment]
     nombre varchar
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table materias{
+    id int [pk, increment]
+    nombre varchar
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table users{
+    id int [pk, increment]
+    name varchar
+    email varchar
+    password varchar
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table personal{
+    id int [pk, increment]
+    usuario_id int [ref: > users.id]
+    tipo varchar
+    nombres varchar
+    apellidos varchar
+    ci varchar
+    fecha_nacimiento date
+    direccion varchar
+    telefono varchar
+    profesion varchar
+    foto varchar
     created_at timestamp
     updated_at timestamp
 }

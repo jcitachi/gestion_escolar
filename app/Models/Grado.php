@@ -9,9 +9,11 @@ class Grado extends Model
     //
     protected $table = 'grados';
 
+
     protected $fillable = [
         'nombre',
         'nivel_id',
+
     ];
 
     public function nivel()
@@ -19,5 +21,10 @@ class Grado extends Model
         return $this->belongsTo(Nivel::class);
     }
 
+
+    public function paralelos()
+    {
+        return $this->hasMany(Paralelo::class);
+    }
 
 }

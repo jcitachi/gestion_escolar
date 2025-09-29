@@ -336,11 +336,51 @@ return [
             'classes' => 'bg-blue text-white',
         ],
         [
+
+            'text' => 'Paralelos',
+            'route' => 'admin.paralelos.index',
+            'icon' => 'fas fa-fw fa-clone',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
+
             'text' => 'Turnos',
             'route' => 'admin.turnos.index',
             'icon' => 'fas fa-fw fa-clock',
             'classes' => 'bg-blue text-white',
         ],
+        [
+            'text' => 'Materias',
+            'route' => 'admin.materias.index',
+            'icon' => 'fas fa-fw fa-book',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
+            'text' => 'Roles',
+            'route' => 'admin.roles.index',
+            'icon' => 'fas fa-fw fa-user-shield',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
+            'text' => 'Personal',
+            'icon' => 'fas fa-fw fa-user-tie',
+            'classes' => 'bg-blue text-white',
+            'submenu' => [
+                [
+                    'text' => 'Administrativos',
+                    'url' => '/admin/personal/administrativo',
+                    //'route' => ['admin.personal.index', 'administrativo'],
+                    'icon' => 'fas fa-fw fa-user-cog',
+                ],
+                [
+                    'text' => 'Docente',
+                    'url' => '/admin/personal/docente',
+                    //'route' => ['admin.personal.index', 'docente'],
+                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
+                ],
+            ], // cierre de 'submenu'
+
+         ],
 
     ],
 

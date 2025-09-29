@@ -85,7 +85,11 @@
     </div>
 @stop
 
-
+@section('footer')
+    <div class="text-center py-3">
+        <strong>Copyright &copy; 2025 <a href="#">Juan Carlos</a>.</strong> Todos los derechos reservados.
+    </div>
+@stop
 @section('css')
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
