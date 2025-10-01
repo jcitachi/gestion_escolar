@@ -8,15 +8,7 @@
 @stop
 
 @section('content')
-<<<<<<< HEAD
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box zoomP">
-                <img src="{{ asset('img/colegio.gif') }}" width="70px" alt="">
-                <div class="info-box-content">
-                    <span class="info-box-text">Gestiones Registradas</span>
-                    <span class="info-box-number" style="color: green; font-size: 20pt">{{ $total_gestiones }} gestiones</span>
-=======
+
     <p>Panel administrativo</p>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
@@ -25,34 +17,23 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Gestiones Registrados</span>
                     <span class="info-box-number">{{ $total_gestiones }} Gestiones</span>
->>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
+
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box zoomP">
-<<<<<<< HEAD
-                <img src="{{ asset('img/calendario.gif') }}" width="70px" alt="">
-                <div class="info-box-content">
-                    <span class="info-box-text">Periodos Registradas</span>
-                    <span class="info-box-number" style="color: green; font-size: 20pt">{{ $total_periodos }} periodos</span>
-=======
+
                 <img src="{{asset('img/calendar.gif')}}" width="70px" alt="">
                 <div class="info-box-content">
                     <span class="info-box-text">Periodos Registrados</span>
                     <span class="info-box-number">{{ $total_periodos }} Periodos</span>
->>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
+
                 </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box zoomP">
-<<<<<<< HEAD
-                <img src="{{ asset('img/nivel-educativo.png') }}" width="70px" alt="">
-                <div class="info-box-content">
-                    <span class="info-box-text">Niveles Registradas</span>
-                    <span class="info-box-number" style="color: green; font-size: 20pt">{{ $total_niveles }} niveles</span>
-=======
                 <img src="{{asset('img/nivel.gif')}}" width="70px" alt="">
                 <div class="info-box-content">
                     <span class="info-box-text">Niveles Registrados</span>
@@ -111,7 +92,6 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Personal Administrativo</span>
                     <span class="info-box-number">{{-- $total_roles--}} Administrativos</span>
->>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
                 </div>
             </div>
         </div>

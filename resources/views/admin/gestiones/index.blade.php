@@ -26,11 +26,9 @@
             @include('admin.gestiones.edit-modal')
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box zoomP">
-<<<<<<< HEAD
-                    <img src="{{ asset('img/colegio.gif') }}" width="70px" alt="colegio">
-=======
-                    <img src="{{ asset('img/colegio.gif') }}" width="90px" alt="Calendario">
->>>>>>> e641f83f14fd56ca9ba5dad13fb76a695f6d364c
+
+                    <img src="{{ asset('img/colegio.gif') }}" width="90px" alt="colegio">
+
                     <div class="info-box-content">
                         <span class="info-box-text">Gestion Educativa </span>
                         <span class="info-box-number" style="color: green; font-size: 20pt">{{ $gestion->nombre }}</span>

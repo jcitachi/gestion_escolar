@@ -78,11 +78,11 @@ class PersonalController extends Controller
         $nombreArchivo = time() . '_' . $fotoPath->getClientOriginalName();
         $rutaDestino = public_path('uploads/fotos');
         $fotoPath->move($rutaDestino, $nombreArchivo);
-        $personal->foto = 'uploads/logos/' . $nombreArchivo;
+        $personal->foto = 'uploads/fotos/' . $nombreArchivo;
 
         $personal->save();
         return redirect()->route('admin.personal.index', $request->tipo)
-        ->with('mensaje', 'El personal se creó con éxito')
+        ->with('mensaje', 'El personal '.$request->tipo.' se creó con éxito')
         ->with('icono', 'success');
 
 

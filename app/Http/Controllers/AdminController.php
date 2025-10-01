@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gestion;
-
 use App\Models\Grado;
 use App\Models\Nivel;
 use App\Models\Paralelo;
@@ -25,7 +24,7 @@ class AdminController extends Controller
         $total_turnos = Turno::count(); //
         $total_paralelos = Paralelo::count(); // Aquí deberías obtener el total de turnos desde la base de datos
         $total_materias = Materia::count(); // Aquí deberías obtener el total de materias desde la base de datos
-        $total_roles = Role::count(); // Aquí deberías obtener el total de roles desde la base de datos
+        $total_roles = Role::count();
         return view(
             'admin.index',
             compact(
