@@ -49,7 +49,9 @@
                                                 id="miFormulario{{ $materia->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-danger btn-sm"
                                                     onclick="preguntar{{ $materia->id }}(event)">
                                                     <i class="fas fa-trash" data-toggle="tooltip" title="Eliminar">
                                                         Eliminar</i>

@@ -82,11 +82,8 @@ class PersonalController extends Controller
 
         $personal->save();
         return redirect()->route('admin.personal.index', $request->tipo)
-        ->with('mensaje', 'El personal '.$request->tipo.' se creó con éxito')
-        ->with('icono', 'success');
-
-
-
+            ->with('mensaje', 'El personal ' . $request->tipo . ' se creó con éxito')
+            ->with('icono', 'success');
     }
 
     /**
@@ -94,15 +91,19 @@ class PersonalController extends Controller
      */
     public function show($id)
     {
-        //
+        $personal = Personal::with('usuario.roles')->findOrFail($id);
+        //$personal = Personal::findOrFail($id);
+        return view('admin.personal.show', compact('personal'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Personal $personal)
+    public function edit($id)
     {
-        //
+        $personal = Personal::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.personal.edit', compact('personal', 'roles'));
     }
 
     /**
@@ -110,7 +111,60 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 1️⃣ Obtenemos primero el personal
+        $personal = Personal::findOrFail($id);
+        // 2️⃣ Luego su usuario relacionado
+        $usuario = User::findOrFail($personal->usuario_id);
+
+
+        //dd($request->all());
+        //$datos = request()->all();
+        //return response()->json($datos);
+        $data = $request->validate([
+            'rol' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'ci' => 'required|unique:personals,ci,' . $id,
+            'fecha_nacimiento' => 'required',
+            'telefono' => 'required',
+            'profesion' => 'required',
+            'email' => 'required|email|unique:users,email,' . $usuario->id,
+            'direccion' => 'required',
+        ]);
+
+        $usuario->name = $request->apellido . ' ' . $request->nombre;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->ci);
+        $usuario->save();
+
+        $usuario->syncRoles($request->rol);
+
+        //$personal = Personal::findOrFail($id);
+        $personal->nombre = $request->nombre;
+        $personal->apellido = $request->apellido;
+        $personal->ci = $request->ci;
+        $personal->fecha_nacimiento = $request->fecha_nacimiento;
+        $personal->direccion = $request->direccion;
+        $personal->telefono = $request->telefono;
+        $personal->profesion = $request->profesion;
+
+        if ($request->hasFile('foto')) {
+
+            if ($personal->foto && file_exists(public_path($personal->foto))) {
+                unlink(public_path($personal->foto));
+            }
+
+            $fotoPath = $request->file('foto');
+            $nombreArchivo = time() . '_' . $fotoPath->getClientOriginalName();
+            $rutaDestino = public_path('uploads/fotos');
+            $fotoPath->move($rutaDestino, $nombreArchivo);
+            $personal->foto = 'uploads/fotos/' . $nombreArchivo;
+        }
+
+        $personal->save();
+        return redirect()->route('admin.personal.index', $personal->tipo)
+            ->with('mensaje', 'El personal ' . $personal->tipo . ' se actualizó con éxito')
+            ->with('icono', 'success');
     }
 
     /**
@@ -118,6 +172,21 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $personal = Personal::findOrFail($id);
+        $tipo = $personal->tipo;
+
+        $usuario = User::findOrFail($personal->usuario_id);
+
+        if ($personal->foto && file_exists(public_path($personal->foto))) {
+            unlink(public_path($personal->foto));
+        }
+
+        $usuario->delete();
+        $personal->delete();
+
+
+        return redirect()->route('admin.personal.index', $tipo)
+            ->with('mensaje', 'El personal ' . $tipo . ' se eliminó con éxito')
+            ->with('icono', 'success');
     }
 }

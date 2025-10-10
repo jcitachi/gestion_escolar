@@ -7,6 +7,7 @@
 
 @section('content')
     <div class="row justify-content-center">
+
         <div class="col-md-12">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-gradient-primary text-white rounded-top-4">
@@ -27,7 +28,7 @@
                                         <i class="fas fa-upload"></i> Seleccionar archivo
                                     </label>
                                     <input type="file" class="d-none" id="foto" name="foto" accept="image/*"
-                                        onchange="mostrarImagen(event)">
+                                        onchange="mostrarImagen(event)" required>
                                     <span id="nombre-archivo" class="mt-2 text-muted">Ningún archivo seleccionado</span>
 
                                     <!-- Imagen centrada -->
@@ -62,6 +63,7 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+
                                     {{-- Nombre Completo --}}
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -156,7 +158,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="email" name="email" id="email" value="{{ old('email') }}"
-                                            placeholder="Ingrese el correo electrónico" class="form-control rounded-pill"
+                                            class="form-control rounded-pill"
                                             placeholder="ejemplo@correo.com" required>
                                     </div>
                                     @error('email')
@@ -182,7 +184,7 @@
                                 <hr>
                                 <div class="row justify-content-center">
                                     <div class="mt-5 ">
-                                        <a href="{{ route('admin.personal.index', 'administrativo') }}"
+                                        <a href="{{ route('admin.personal.index', $tipo) }}"
                                             class="btn btn-outline-secondary btn-sm rounded-pill mr-2">
                                             <i class="fas fa-arrow-left"></i> Cancelar
                                         </a>

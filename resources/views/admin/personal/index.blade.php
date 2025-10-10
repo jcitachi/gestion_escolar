@@ -47,10 +47,15 @@
                                     <td>{{ $personal->usuario->email }}</td>
                                     <td>
                                         <img src="{{ url($personal->foto) }}" class="img-fluid rounded"
-                                            style="width: 100px;  object-fit: cover; object-position: center;"
+                                            style="width: 50px;  object-fit: cover; object-position: center;"
                                             alt="Foto de personal">
                                     </td>
                                     <td class="d-flex justify-content-center">
+                                        {{-- Ver --}}
+                                        <a href="{{ route('admin.personal.show', $personal->id) }}"
+                                            class="btn btn-info btn-sm mr-2">
+                                            <i class="fas fa-eye" data-toggle="tooltip" title="Ver"></i>
+                                        </a>
                                         {{-- Editar --}}
                                         <a href="{{ route('admin.personal.edit', $personal->id) }}"
                                             class="btn btn-success btn-sm mr-2">
